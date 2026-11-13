@@ -230,7 +230,7 @@ erDiagram
 | Поле | Метод Laravel | Ограничения |
 |------|---------------|-------------|
 | user_id | `foreignId('user_id')->constrained()->cascadeOnDelete()` | |
-| packaging_id | `foreignId('packaging_id')->constrained()->restrictOnDelete()` | упаковку в использовании не удалить — отключается `is_active` |
+| packaging_id | `foreignId('packaging_id')->constrained('packagings')->restrictOnDelete()` | упаковку в использовании не удалить — отключается `is_active` |
 | name | `string('name', 100)` | NOT NULL |
 | comment | `string('comment', 500)->nullable()` | |
 

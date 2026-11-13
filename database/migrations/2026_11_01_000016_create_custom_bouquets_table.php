@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             // Упаковку, использованную в букетах, удалить нельзя — её можно отключить (is_active)
-            $table->foreignId('packaging_id')->constrained()->restrictOnDelete();
+            $table->foreignId('packaging_id')->constrained('packagings')->restrictOnDelete();
             $table->string('name', 100);
             $table->string('comment', 500)->nullable();
             $table->timestamps();
