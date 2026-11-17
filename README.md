@@ -1,7 +1,7 @@
 # Flower Shop API — цветочный магазин с конструктором букетов
 
 Серверная часть курсового проекта (вариант 28) по дисциплине «Основы backend-разработки».
-REST API на **Laravel 12** (PHP 8.3), СУБД **MySQL**, аутентификация **Laravel Sanctum** (Bearer-токены).
+REST API на **Laravel 12** (PHP 8.3), СУБД **SQLite** (файл в проекте, при желании — MySQL), аутентификация **Laravel Sanctum** (Bearer-токены).
 Клиентская часть (Vue 3) — в отдельном репозитории `flower-shop-client`.
 
 ## Возможности
@@ -17,7 +17,12 @@ REST API на **Laravel 12** (PHP 8.3), СУБД **MySQL**, аутентифик
 
 ## Установка
 
-Требуется: PHP ≥ 8.3 (pdo_mysql, mbstring, openssl, fileinfo, curl, gd), Composer, MySQL 8 (Laragon / Herd / OpenServer подходят).
+Требуется только **PHP ≥ 8.3** (расширения pdo_sqlite, mbstring, openssl, fileinfo, curl, gd) и **Composer**.
+Отдельный сервер базы данных и Laragon не нужны: база — файл `database/database.sqlite`,
+веб-сервер запускается командой Laravel `php artisan serve`.
+
+Самый простой способ — файл `start-project.bat` (Windows): кладётся рядом с папками
+`flower-shop-api` и `flower-shop-client` и запускает всё сам.
 
 ```bash
 git clone <url> flower-shop-api
@@ -27,15 +32,21 @@ cp .env.example .env            # Windows: copy .env.example .env
 php artisan key:generate
 ```
 
-Создайте базу `flower_shop` (utf8mb4) и при необходимости поправьте `DB_*` в `.env`, затем:
+Ручной запуск:
 
 ```bash
-php artisan migrate --seed      # или migrate:fresh --seed для пересоздания
+php artisan migrate --seed      # создаст database/database.sqlite и заполнит тестовыми данными
+                                # (migrate:fresh --seed — пересоздать базу)
 php artisan storage:link        # публичный доступ к фото букетов
 php artisan serve               # http://localhost:8000
 ```
 
 Проверка: `GET http://localhost:8000/api/health` → `{"app": "...", "time": "...", "database": "ok"}`.
+
+### Переход на MySQL (необязательно)
+
+В `.env` укажите `DB_CONNECTION=mysql` и параметры `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+(пример — в `.env.example`), затем `php artisan migrate:fresh --seed`. Код приложения менять не нужно.
 
 ## Тестовые учётные записи
 
