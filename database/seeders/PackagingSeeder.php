@@ -11,12 +11,12 @@ class PackagingSeeder extends Seeder
     public function run(): void
     {
         $items = [
-            ['Крафт-бумага', PackagingType::Paper, 'бежевый', 150, 51],
-            ['Корейская бумага', PackagingType::Paper, 'пудровый', 250, 51],
-            ['Матовая плёнка', PackagingType::Film, 'прозрачный', 120, 101],
-            ['Шляпная коробка малая', PackagingType::Box, 'белый', 600, 25],
-            ['Шляпная коробка большая', PackagingType::Box, 'чёрный', 900, 51],
-            ['Плетёная корзина', PackagingType::Basket, 'натуральный', 1200, 101],
+            ['Крафт-бумага', PackagingType::Paper, 'бежевый', 900, 51],
+            ['Корейская бумага', PackagingType::Paper, 'пудровый', 1500, 51],
+            ['Матовая плёнка', PackagingType::Film, 'прозрачный', 700, 101],
+            ['Шляпная коробка малая', PackagingType::Box, 'белый', 3500, 25],
+            ['Шляпная коробка большая', PackagingType::Box, 'чёрный', 5500, 51],
+            ['Плетёная корзина', PackagingType::Basket, 'натуральный', 7000, 101],
         ];
 
         foreach ($items as [$name, $type, $color, $price, $max]) {

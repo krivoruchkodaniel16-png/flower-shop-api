@@ -27,17 +27,17 @@ class OrderTest extends TestCase
 
     public function test_order_is_created_and_flowers_are_written_off(): void
     {
-        [$bouquet, $flower] = $this->makeBouquet(stock: 20, stemsPerBouquet: 5, price: 2500);
+        [$bouquet, $flower] = $this->makeBouquet(stock: 20, stemsPerBouquet: 5, price: 15000);
         $customer = User::factory()->create();
         Sanctum::actingAs($customer);
 
         $this->placeOrder($bouquet->id, 2)
             ->assertCreated()
             ->assertJsonPath('data.status', 'new')
-            ->assertJsonPath('data.items_total', 5000)
-            ->assertJsonPath('data.delivery_price', 0)        // от 5000 ₽ — бесплатно
-            ->assertJsonPath('data.postcard_price', 100)
-            ->assertJsonPath('data.total_price', 5100)
+            ->assertJsonPath('data.items_total', 30000)
+            ->assertJsonPath('data.delivery_price', 0)        // от 30 000 ₸ — бесплатно
+            ->assertJsonPath('data.postcard_price', 500)
+            ->assertJsonPath('data.total_price', 30500)
             ->assertJsonPath('data.postcard.text', 'С днём рождения!')
             ->assertJsonPath('data.can_cancel', true);
 

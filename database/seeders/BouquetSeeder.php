@@ -51,8 +51,8 @@ class BouquetSeeder extends Seeder
                 $attach[$f->id] = ['quantity' => $qty];
             }
 
-            // Розничная цена: себестоимость цветов + упаковка/работа, округлённо до 50 ₽
-            $price = (int) (ceil(($cost * 1.25 + 300) / 50) * 50);
+            // Розничная цена: себестоимость цветов + упаковка/работа, округлённо до 100 ₸
+            $price = (int) (ceil(($cost * 1.25 + 1800) / 100) * 100);
 
             $bouquet = Bouquet::create([
                 'name' => $name,

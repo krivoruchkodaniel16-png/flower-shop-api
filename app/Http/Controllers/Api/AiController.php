@@ -39,7 +39,7 @@ class AiController extends Controller
     /**
      * Подбор букета по запросу на естественном языке. Доступ: авторизованные.
      *
-     * POST /api/ai/bouquet-suggestions {query: "на юбилей маме, любит пастельные тона, до 3000 рублей"}
+     * POST /api/ai/bouquet-suggestions {query: "на юбилей маме, любит пастельные тона, до 20 000 тенге"}
      * → 200 {data: {criteria, explanation, source, bouquets: [...]}}
      */
     public function bouquetSuggestions(BouquetSuggestionRequest $request): JsonResponse

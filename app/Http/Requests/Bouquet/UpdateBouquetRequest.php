@@ -12,7 +12,7 @@ class UpdateBouquetRequest extends StoreBouquetRequest
         return [
             'name' => ['sometimes', 'required', 'string', 'max:150'],
             'description' => ['sometimes', 'nullable', 'string', 'max:2000'],
-            'price' => ['sometimes', 'required', 'numeric', 'gt:0', 'max:1000000'],
+            'price' => ['sometimes', 'required', 'numeric', 'gt:0', 'max:10000000'],
             'is_active' => ['sometimes', 'boolean'],
             'flowers' => ['sometimes', 'required', 'array', 'min:1', 'max:15'],
             'flowers.*.flower_id' => ['required', 'integer', 'distinct', 'exists:flowers,id'],

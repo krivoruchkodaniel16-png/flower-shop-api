@@ -21,7 +21,7 @@ class StorePackagingRequest extends FormRequest
             'name' => [...$sometimes, 'required', 'string', 'max:100'],
             'type' => [...$sometimes, 'required', Rule::enum(PackagingType::class)],
             'color' => ['sometimes', 'nullable', 'string', 'max:50'],
-            'price' => [...$sometimes, 'required', 'numeric', 'min:0', 'max:100000'],
+            'price' => [...$sometimes, 'required', 'numeric', 'min:0', 'max:1000000'],
             'max_flowers' => [...$sometimes, 'required', 'integer', 'min:3', 'max:201'],
             'is_active' => ['sometimes', 'boolean'],
         ];

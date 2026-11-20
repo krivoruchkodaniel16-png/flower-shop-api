@@ -16,7 +16,7 @@ class StoreBouquetRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:150'],
             'description' => ['nullable', 'string', 'max:2000'],
-            'price' => ['required', 'numeric', 'gt:0', 'max:1000000'],
+            'price' => ['required', 'numeric', 'gt:0', 'max:10000000'],
             'is_active' => ['sometimes', 'boolean'],
             // состав букета (многие ко многим с количеством)
             'flowers' => ['required', 'array', 'min:1', 'max:15'],

@@ -18,7 +18,7 @@ class StoreFlowerRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100', 'unique:flowers,name'],
             'color' => ['required', Rule::enum(FlowerColor::class)],
-            'price' => ['required', 'numeric', 'gt:0', 'max:100000'],
+            'price' => ['required', 'numeric', 'gt:0', 'max:1000000'],
             'stock_quantity' => ['required', 'integer', 'min:0', 'max:100000'],
             'description' => ['nullable', 'string', 'max:1000'],
             'is_active' => ['sometimes', 'boolean'],
